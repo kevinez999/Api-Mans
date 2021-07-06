@@ -18,3 +18,4 @@
    <a href="https://instagram.com/ekagans_02"><img height="30" src="https://raw.githubusercontent.com/TobyG74/TobyG74/main/instagram.jpg"></a>
 </P>
 Hati-hati, karena salah sedikit langsung eror :v
+ 

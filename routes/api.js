@@ -2359,6 +2359,44 @@ router.get("/maker/nulis", async (req, res, next) => {
     res.json(loghandler.invalidKey)
   }
 })
+router.get('/nulis', async (req, res, next) => {
+	var apikey = req.query.apikey,
+            text = req.query.text
+            
+	if(!apikey) return res.json(loghandler.notparam)
+    if (!text) return res.json(loghandler.nottext)
+ 
+  if(listkey.includes(apikey)) {
+   try {
+	   var fontPath = __path + '/lib/Zahraaa.ttf'
+           var inputPath = __path + '/lib/nulis.jpg'
+           var outputPath = __path + '/tmp/hasil.jpg'
+      spawn('convert', [
+            inputPath,
+            '-font',
+            fontPath,
+            '-size',
+            '700x960',
+            '-pointsize',
+            '30',
+            '-interline-spacing',
+            '-7',
+            '-annotate',
+            '+170+222',
+            text,
+            outputPath
+         ])
+         .on('error', () => console.log('Error Nulis'))
+         .on('exit', () =>
+         {
+	         res.sendFile(outputPath)
+        })
+   } catch (e) {
+      console.log(e);
+	 res.json(loghandler.erorr)
+   }
+})
+
 
 router.get('/maker/ttp', async (req, res, next) => {
 
